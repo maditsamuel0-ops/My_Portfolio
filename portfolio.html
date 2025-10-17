@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riak Samuel Atem - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #5D5CDE;
+            --dark-bg: #181818;
+            --light-bg: #FFFFFF;
+            --navy-blue: #1f2e3d;
+            --light-blue: #95d9ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        body.dark {
+            background-color: var(--dark-bg);
+            color: #e0e0e0;
+        }
+
+        .navbar {
+            background-color: var(--navy-blue) !important;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .logo_text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            color: whitesmoke;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: whitesmoke !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--light-blue) !important;
+        }
+
+        .welcome {
+            background: linear-gradient(135deg, var(--navy-blue), #2a3d4f);
+            color: var(--light-blue);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .welcome h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .welcome .lead {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #4a49c7;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(93, 92, 222, 0.3);
+        }
+
+        .content {
+            background-image: url('madit.jpeg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left;
+            background-attachment: fixed;
+            min-height: 200vh;
+            padding: 2rem 0;
+            position: relative;
+            background-color: aliceblue ;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            right: 10px;
+            left: 250px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark .content-box {
+            background-color: rgba(42, 42, 42, 0.95);
+            color: #e0e0e0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-box h1 {
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .dark .content-box h1 {
+            color: var(--light-blue);
+        }
+
+        .content-box hr {
+            border: 2px solid var(--primary-color);
+            width: 100%;
+            margin-bottom: 1.5rem;
+            opacity: 1;
+        }
+
+        .content-box p, .content-box li {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item h3 {
+            color: var(--navy-blue);
+            margin-top: 0.5rem;
+        }
+
+        .dark .skill-item h3 {
+            color: var(--light-blue);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background-color: var(--navy-blue);
+                border-radius: 10px;
+                margin-top: 1rem;
+                padding: 1rem;
+            }
+
+            .welcome {
+                padding: 2rem 0;
+            }
+
+            .content-box {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .content-box h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .content-box {
+                padding: 1rem;
+            }
+            
+            .welcome {
+                padding: 1.5rem 0;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a49c7;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand logo_text" href="#">Riak Samuel Atem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#interests">Interests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="welcome" style="margin-top: 80px;">
+        <div class="container">
+            <h1 class="display-4">Hi, I'm Madit!</h1>
+            <p class="lead">Web Developer | Tech Enthusiast | Computer Scientist</p>
+            <a href="https://github.com/your-github-username" target="_blank" class="btn btn-custom">
+                <i class="fab fa-github me-2"></i>View My GitHub
+            </a>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="container">
+
+            <section id="about" class="content-box">
+                <h1><i class="fas fa-user me-3"></i>About Me</h1>
+                <hr>
+                <p>
+                    I am a passionate Computer Science student with a keen interest in the dynamic world of technology.
+                    Fascinated by the latest gadgets and innovations, I constantly keep myself updated with emerging trends in
+                    the tech industry. My curiosity extends across software development, cybersecurity, and networking,
+                    where I actively explore solutions that bridge practical applications with cutting-edge technology.
+                </p>
+                <p>
+                    Beyond learning, I am also an innovator, developing projects that delve into advanced topics like blockchain, aiming
+                    to create impactful solutions that push the boundaries of what technology can achieve. Driven by both 
+                    knowledge and creativity, I strive to contribute meaningfully to the ever-evolving landscape of computer science.
+                </p>
+            </section>
+
+            <section id="education" class="content-box">
+                <h1><i class="fas fa-graduation-cap me-3"></i>Education</h1>
+                <hr>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 p-0 mb-3">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Bachelor of Science in Computer Science</div>
+                            Midlands State University, Zimbabwe (Expected Graduation 2028)
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 p-0 mb-3">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Bachelor of Science in Architecture</div>
+                            University of Juba, South Sudan (Graduated 2023)
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 p-0 mb-3">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">A Level</div>
+                            Makerere College, Uganda (Graduated 2016)
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 p-0 mb-3">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">O Level</div>
+                            Midland High School, Uganda (Graduated 2013)
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section id="interests" class="content-box">
+                <h1><i class="fas fa-heart me-3"></i>Areas of Interest</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-link text-primary me-2"></i>Blockchain Technology</li>
+                            <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>Web Development</li>
+                            <li class="mb-2"><i class="fas fa-shield-alt text-primary me-2"></i>Cybersecurity</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-database text-primary me-2"></i>Database Management</li>
+                            <li class="mb-2"><i class="fas fa-network-wired text-primary me-2"></i>Networking</li>
+                            <li class="mb-2"><i class="fas fa-gamepad text-primary me-2"></i>Console Gaming</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="content-box">
+                <h1><i class="fas fa-tools me-3"></i>Skills</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4 skill-item">
+                        <i class="fab fa-python skills-icon"></i>
+                        <h3>Python & Django</h3>
+                        <p>Backend development and web frameworks</p>
+                    </div>
+                    <div class="col-md-4 skill-item">
+                        <i class="fas fa-code skills-icon"></i>
+                        <h3>HTML & CSS</h3>
+                        <p>Frontend development and responsive design</p>
+                    </div>
+                    <div class="col-md-4 skill-item">
+                        <i class="fas fa-database skills-icon"></i>
+                        <h3>Database Management</h3>
+                        <p>Data modeling and optimization</p>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="skill-item">
+                            <i class="fas fa-link skills-icon"></i>
+                            <h3>Blockchain Concepts</h3>
+                            <p>Distributed systems and cryptocurrency technologies</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-box text-center">
+                <h1><i class="fas fa-envelope me-3"></i>Get In Touch</h1>
+                <hr>
+                <p class="lead">Let's connect and discuss opportunities!</p>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <a href="mailto:r244762@students.msu.ac.zw.com" class="btn btn-outline-primary me-3 mb-2">
+                            <i class="fas fa-envelope me-2"></i>Email
+                        </a>
+                        <a href="https://linkedin.com/in/your-profile" target="_blank" class="btn btn-outline-primary me-3 mb-2">
+                            <i class="fab fa-linkedin me-2"></i>LinkedIn
+                        </a>
+                        <a href="https://github.com/your-github-username" target="_blank" class="btn btn-outline-primary mb-2">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
